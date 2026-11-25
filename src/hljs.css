@@ -1,0 +1,52 @@
+/* Code highlighting for the preview, driven by the theme tokens in styles.css. */
+.hljs-comment,
+.hljs-quote {
+  color: var(--text-faint);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-doctag {
+  color: var(--syn-keyword);
+}
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-template-tag {
+  color: var(--syn-string);
+}
+.hljs-number,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-variable.constant_ {
+  color: var(--syn-number);
+}
+.hljs-title,
+.hljs-title.function_,
+.hljs-section {
+  color: var(--syn-func);
+}
+.hljs-type,
+.hljs-title.class_,
+.hljs-built_in,
+.hljs-meta {
+  color: var(--syn-type);
+}
+.hljs-attr,
+.hljs-name,
+.hljs-tag,
+.hljs-variable,
+.hljs-property {
+  color: var(--syn-attr);
+}
+.hljs-deletion {
+  color: var(--danger);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
+}

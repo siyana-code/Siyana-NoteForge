@@ -1,0 +1,54 @@
+# Flathub manifest. Builds fully offline from source, as Flathub requires.
+# Regenerate the vendored dependency lists whenever package-lock.json or
+# Cargo.lock change:  ./packaging/flatpak/generate-sources.sh
+id: io.github.siyana_code.NoteForge
+runtime: org.gnome.Platform
+runtime-version: '51'
+sdk: org.gnome.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.rust-stable
+  - org.freedesktop.Sdk.Extension.node24
+command: noteforge
+
+finish-args:
+  - --share=ipc
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --device=dri
+  # Vaults are ordinary folders the user picks anywhere in their home
+  # directory. NoteForge watches them for changes made by other editors and
+  # renames files when links are updated, which the document portal's
+  # per-file access can't support.
+  - --filesystem=home
+
+build-options:
+  append-path: /usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/node24/bin
+  env:
+    CARGO_HOME: /run/build/noteforge/cargo
+    CARGO_NET_OFFLINE: 'true'
+    XDG_CACHE_HOME: /run/build/noteforge/flatpak-node/cache
+    npm_config_cache: /run/build/noteforge/flatpak-node/npm-cache
+    npm_config_offline: 'true'
+
+modules:
+  - name: noteforge
+    buildsystem: simple
+    sources:
+      - type: git
+        url: https://github.com/siyana-code/Siyana-NoteForge.git
+        tag: v0.1.0
+      - node-sources.json
+      - cargo-sources.json
+    build-commands:
+      - npm ci --offline --no-audit --no-fund
+      - npx vite build
+      - cargo build --offline --release --manifest-path src-tauri/Cargo.toml --features tauri/custom-protocol
+      - install -Dm755 src-tauri/target/release/noteforge /app/bin/noteforge
+      - install -Dm644 packaging/linux/io.github.siyana_code.NoteForge.desktop -t /app/share/applications
+      - install -Dm644 packaging/linux/io.github.siyana_code.NoteForge.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 assets/icon.svg /app/share/icons/hicolor/scalable/apps/io.github.siyana_code.NoteForge.svg
+      - install -Dm644 src-tauri/icons/32x32.png /app/share/icons/hicolor/32x32/apps/io.github.siyana_code.NoteForge.png
+      - install -Dm644 src-tauri/icons/64x64.png /app/share/icons/hicolor/64x64/apps/io.github.siyana_code.NoteForge.png
+      - install -Dm644 src-tauri/icons/128x128.png /app/share/icons/hicolor/128x128/apps/io.github.siyana_code.NoteForge.png
+      - install -Dm644 src-tauri/icons/128x128@2x.png /app/share/icons/hicolor/256x256/apps/io.github.siyana_code.NoteForge.png
+      - install -Dm644 src-tauri/icons/icon.png /app/share/icons/hicolor/512x512/apps/io.github.siyana_code.NoteForge.png

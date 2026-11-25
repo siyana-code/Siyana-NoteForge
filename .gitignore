@@ -1,0 +1,12 @@
+node_modules/
+dist/
+src-tauri/target/
+src-tauri/gen/schemas/
+*.tsbuildinfo
+.flatpak-builder/
+packaging/flatpak/build-dir/
+packaging/flatpak/repo/
+*.flatpak
+.DS_Store
+.flatpak-builder-tools/
+packaging/flatpak/*.local.yml

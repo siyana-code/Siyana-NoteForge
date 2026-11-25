@@ -1,0 +1,38 @@
+[package]
+name = "noteforge"
+version = "0.1.0"
+description = "Local-first Markdown knowledge manager"
+authors = ["Siyana"]
+repository = "https://github.com/siyana-code/Siyana-NoteForge"
+license = "MIT"
+edition = "2021"
+rust-version = "1.80"
+
+[lib]
+name = "noteforge_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["protocol-asset"] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.43", features = ["bundled"] }
+notify-debouncer-mini = "0.8"
+regex = "1"
+walkdir = "2"
+thiserror = "2"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

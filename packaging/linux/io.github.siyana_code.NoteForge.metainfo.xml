@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.siyana_code.NoteForge</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+
+  <name>NoteForge</name>
+  <summary>Link and search your Markdown notes</summary>
+  <developer id="io.github.siyana_code">
+    <name>Siyana</name>
+  </developer>
+
+  <description>
+    <p>
+      NoteForge is a local-first knowledge manager. Your notes are ordinary
+      Markdown files in a folder you choose. There is no account, no cloud
+      and no lock-in, and any other editor can open the same files.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Link notes with [[wikilinks]], with autocomplete as you type</li>
+      <li>See every note that links back to the one you are reading</li>
+      <li>Organise with #tags, including nested tags such as #project/alpha</li>
+      <li>Fast full-text search across all notes</li>
+      <li>Live Markdown preview with code highlighting, tables and task lists</li>
+      <li>An interactive graph of how your notes connect</li>
+      <li>Renaming a note updates the links that point to it</li>
+      <li>Changes made by other apps are picked up automatically</li>
+      <li>Light and dark themes</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">io.github.siyana_code.NoteForge.desktop</launchable>
+  <provides>
+    <binary>noteforge</binary>
+  </provides>
+
+  <url type="homepage">https://github.com/siyana-code/Siyana-NoteForge</url>
+  <url type="bugtracker">https://github.com/siyana-code/Siyana-NoteForge/issues</url>
+  <url type="vcs-browser">https://github.com/siyana-code/Siyana-NoteForge</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Editor and live preview with backlinks</caption>
+      <image>https://raw.githubusercontent.com/siyana-code/Siyana-NoteForge/main/docs/screenshots/editor.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Graph of linked notes</caption>
+      <image>https://raw.githubusercontent.com/siyana-code/Siyana-NoteForge/main/docs/screenshots/graph.png</image>
+    </screenshot>
+  </screenshots>
+
+  <branding>
+    <color type="primary" scheme_preference="light">#c7d2fe</color>
+    <color type="primary" scheme_preference="dark">#3730a3</color>
+  </branding>
+
+  <categories>
+    <category>Office</category>
+  </categories>
+  <keywords>
+    <keyword>notes</keyword>
+    <keyword>markdown</keyword>
+    <keyword>wiki</keyword>
+    <keyword>zettelkasten</keyword>
+    <keyword>backlinks</keyword>
+  </keywords>
+
+  <requires>
+    <display_length compare="ge">720</display_length>
+  </requires>
+  <supports>
+    <control>keyboard</control>
+    <control>pointing</control>
+  </supports>
+
+  <content_rating type="oars-1.1" />
+
+  <releases>
+    <release version="0.1.0" date="2026-11-25">
+      <description>
+        <p>First release.</p>
+      </description>
+    </release>
+  </releases>
+</component>

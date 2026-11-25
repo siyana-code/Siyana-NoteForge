@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=NoteForge
+GenericName=Markdown Notes
+Comment=Local-first Markdown notes with backlinks, tags, search and a graph view
+Exec=noteforge
+Icon=io.github.siyana_code.NoteForge
+Terminal=false
+Categories=Office;TextEditor;
+Keywords=notes;markdown;wiki;zettelkasten;knowledge;backlinks;journal;
+StartupNotify=true
+StartupWMClass=noteforge
